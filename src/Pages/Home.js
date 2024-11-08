@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useFocusEffect } from '@react-navigation/native';
 import Header from './Header';
@@ -7,84 +7,109 @@ import Header from './Header';
 export default function Home() {
 
   return (
-    <View style={css.container}>
+    <ScrollView contentContainerStyle={css.container}>
+      <Header />
       <Text style={css.ola}>Olá,</Text>
       <Text style={css.cliente}>Cliente!</Text>
-      <TouchableOpacity style={css.dateButton}>
-        <Text style={css.dateText}>01/01</Text>
+        <TouchableOpacity style={css.dateButton}>
+          <Text style={css.dateText}>01/01</Text>
+        </TouchableOpacity>
+      <Text style={css.sentimentoText}>Como está se sentindo hoje?</Text>
+      <Text style={css.boxx}></Text>
+      <TouchableOpacity style={css.boxEnviar}>
+        <Text style={css.enviarText}>Enviar</Text>
       </TouchableOpacity>
-      <Text style={css.mapaText}>Mapa mensal</Text>
-      <Text style={css.termometroText}>Termômetro Emocional</Text>
-      <Image source={require("../../assets/emojis.png")} style={css.emojis} />
-      <Text style={css.porcentagem}>50%</Text>
-      <Text style={css.porcentagem}>0%</Text>
-      <Text style={css.porcentagem}>0%</Text>
-      <Text style={css.porcentagem}>0%</Text>
-      <Text style={css.porcentagem}>0%</Text>
-      <Text style={css.porcentagem}>0%</Text>
       <Text style={css.consultaText}>Agende uma consulta para começar sua jornada de cuidado emocional. Escolha o profissional que melhor se adapta às suas necessidades, selecione o horário conveniente, e prepare-se para uma sessão focada em seu bem-estar mental.</Text>
-      <Text style={css.agendar}>Agendar Consulta</Text>
-    </View>
-  )
+      <TouchableOpacity style={css.boxAgendar}>
+        <Text style={css.agendarText}>Agendar Consulta</Text>
+      </TouchableOpacity>
+      
+    </ScrollView>
+)
 }
 
 const css = StyleSheet.create({
   container: {
     flexGrow: 1,
     width: "100%",
-    justifyContent: "center",
-    alignItems: "center",
-    alignContent: "center",
     backgroundColor: "#E5F7FF",
   },
   ola: {
-    width: "20%",
-    height: 50,
-    fontSize: 20,
-    marginTop: -500,
-    paddingTop: 20,
-    marginLeft: -240
+    fontSize: 22,
+    marginLeft: 30
   },
   cliente: {
-    width: "20%",
-    height: 50,
-    fontSize: 20,
-    paddingBottom: 14,
-    marginLeft: -240,
+    fontSize: 22,
+    marginLeft: 30,
     fontWeight: "bold"
   },
-  mapaText: {
-    width: "30%",
-    height: 40,
-    fontSize: 17,
-    marginLeft: -200,
-    paddingTop: 12,
-  },
   dateButton: {
-    width: "19%",
+    width: "20%",
     height: 45,
     borderRadius: 5,
-    marginRight: -200,
-    marginTop: -70,
-    borderWidth: 1
-  },
+    borderWidth: 1,
+    marginLeft: 290,
+    marginTop: -50
+  }, 
   dateText: {
-    padding: 10,
-    paddingLeft: 17,
-    fontSize: 17,
+    fontSize: 18,
+    padding: 16,
+    paddingTop: 8,
   },
-  termometroText: {
-    width: "80%",
-    fontSize: 17
+  sentimentoText: {
+    fontSize: 17,
+    paddingBottom: 30,
+    paddingTop: 40,
+    marginLeft: 30
+  },
+  boxSentimento: {
+    backgroundColor: 20
+  },
+  boxx: {
+    backgroundColor: "#FFFFFF",
+    width: "85%",
+    height: 320,
+    borderRadius: 5,
+    borderWidth: 1,
+    marginLeft: 30,
+  },
+  consultaText: {
+    width: "90%",
+    paddingLeft: 20,
+    marginLeft: 12,
+    marginTop: 20
+  },
+  boxEnviar: {
+    backgroundColor: "#c1d9e3",
+    width: "20%",
+    height: 38,
+    borderRadius: 5,
+    marginTop: 20,
+    marginLeft: 297
+  },
+  enviarText: {
+    paddingLeft: 19,
+    padding: 8,
+    fontSize: 16,
+    color: "#4E778B"
   },
   emojis: {
-    width: "80%",
-    height: 30,
-    marginTop: 15
+    width: "100%",
+    height: 2
   },
-  porcentagem: {
-    display: "flex",
-    justifyContent: "center",
-    flexDirection: "row"
+  boxAgendar: {
+    width: "40%",
+    height: 50,
+    borderRadius: 5,
+    borderWidth: 1,
+    marginTop: 20,
+    borderColor: "#4E778B",
+    marginLeft: 118
+  },
+  agendarText: {
+    padding: 14,
+    fontSize: 15,
+    paddingLeft: 20,
+    color: "#4E778B",
   }
-});
+})

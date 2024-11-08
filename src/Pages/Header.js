@@ -13,7 +13,7 @@ export default function Header() {
 const css = StyleSheet.create({
     header: {
         width: "100%",
-        height: 160,
+        height: 170,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
@@ -21,9 +21,9 @@ const css = StyleSheet.create({
         paddingVertical: 10
       },
       logo: {
-        width: 300, 
+        width: 295, 
         height: 200,
-        marginRight: 38,
+        marginRight: 50,
         resizeMode: 'contain',
 
       },
@@ -40,6 +40,9 @@ const css = StyleSheet.create({
         borderRadius: 30,
         backgroundColor: '#4E778B', 
         justifyContent: 'center',
-        marginRight: 20
+        marginRight: 32
       },
+      dateText: {
+        fontSize: 15
+      }
 })
