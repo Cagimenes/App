@@ -87,18 +87,13 @@ export default function Login({setCadastro}) {
                 value={senha}
                 onChangeText={(digitado) => setSenha(digitado)}
             />
-            <TouchableOpacity style={css.forgot}>
+            <View style={css.forgot}>
                 <Text style={css.forgotText}>Esqueci minha senha</Text>
-            </TouchableOpacity>
+            </View>
             <TouchableOpacity style={css.btnLogin} onPress={RealizaLogin}>
                 <Text style={css.btnLoginText} onPress={handleSubmit}>Entrar</Text>
             </TouchableOpacity>
-            <Text style={css.ou}>ou</Text>
-            <TouchableOpacity style={css.btnFaceId}>
-                <Image source={require("../../assets/faceId.png")} style={css.imgFaceId} />
-                <Text style={css.ouId}>ou</Text>
-                <Image source={require("../../assets/digital.png")} style={css.imgTouchId} />
-            </TouchableOpacity>
+
             <View style={css.criar}>
                 <Text style={css.conta}>Não tem uma conta?</Text>
                 <TouchableOpacity style={css.btn} onPress={Cadastro}>
