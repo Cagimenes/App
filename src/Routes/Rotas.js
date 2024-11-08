@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../Context/AuthContext';
 
 import Home from '../Pages/Home';
@@ -16,10 +16,14 @@ const Tab = createBottomTabNavigator();
 export default function Rotas() {
 
     const { logado } = useContext(AuthContext);
+    const [cadastro, setCadastro] = useState(false);
 
-    if (!logado) {
-        return (<Login />)
+    console.log(logado);
+
+    if (!logado && !cadastro) {
+        return (<Login setCadastro={setCadastro} />)
     }
+
 
     return (
         <NavigationContainer>
