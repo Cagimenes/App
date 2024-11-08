@@ -7,7 +7,9 @@ import { AuthContext } from '../Context/AuthContext';
 
 import Home from '../Pages/Home';
 import Login from '../Pages/Login';
-import Foto from '../Pages/Foto';
+import Relaxe from '../Pages/Relaxe';
+import Sono from '../Pages/Sono';
+import Perfil from '../Pages/Perfil';
 
 const Tab = createBottomTabNavigator();
 
@@ -26,9 +28,9 @@ export default function Rotas() {
                     headerShown: false,
                     tabBarShowLabel: false,
                     tabBarStyle: {
-                        backgroundColor: '#191919',
+                        backgroundColor: '#f1fffe',
                     },
-                    tabBarActiveTintColor: "white"
+                    tabBarActiveTintColor: "black"
                 }}
             >
                 <Tab.Screen
@@ -40,15 +42,34 @@ export default function Rotas() {
                         ),
                     }}
                 />
-                <Tab.Screen
-                    name="Foto"
-                    component={Foto}
+                 <Tab.Screen
+                    name="Relaxe"
+                    component={Relaxe}
                     options={{
                         tabBarIcon: ({ color, size }) => (
-                            <MaterialCommunityIcons name="camera" color={color} size={size} />
+                            <MaterialCommunityIcons name="home" color={color} size={size} />
                         ),
                     }}
                 />
+                <Tab.Screen
+                    name="Sono"
+                    component={Sono}
+                    options={{
+                        tabBarIcon: ({ color, size }) => (
+                            <MaterialCommunityIcons name="home" color={color} size={size} />
+                        ),
+                    }}
+                />
+                 <Tab.Screen
+                    name="Perfil"
+                    component={Perfil}
+                    options={{
+                        tabBarIcon: ({ color, size }) => (
+                            <MaterialCommunityIcons name="home" color={color} size={size} />
+                        ),
+                    }}
+                />
+
             </Tab.Navigator>
         </NavigationContainer>
     )

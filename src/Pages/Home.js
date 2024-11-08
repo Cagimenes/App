@@ -1,69 +1,90 @@
-import { View, Text, StyleSheet, FlatList, ActivityIndicator } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useFocusEffect } from '@react-navigation/native';
-import Animais from '../Components/Animais';
+import Header from './Header';
 
 
 export default function Home() {
 
-  const [animals, setAnimals] = useState([]);
-
-  async function getAnimals() {
-    await fetch('http://10.139.75.15:5251/api/Animal/GetAllAnimal', {
-      method: 'GET',
-      headers: {
-        'content-type': 'application/json'
-      }
-    })
-      .then(res => res.json())
-      .then(json => setAnimals( json ) )
-      .catch(err => console.log(err))
-  }
-
-  useEffect(() => {
-    getAnimals();
-  }, [])
-
-  useFocusEffect(
-    React.useCallback(() => {
-      getAnimals();
-    }, [])
-  );
-
   return (
     <View style={css.container}>
-      {animals.length > 0 ?
-        <>
-          <FlatList
-            data={animals}
-            renderItem={({ item }) => <Animais nome={item.animalNome} image={item.animalFoto} />}
-            keyExtractor={(item) => item.animalId}
-            contentContainerStyle={{ height: (animals.length * 600) + 110 }}
-          />
-        </>
-        :
-        ( animals.length == 0 ? 
-            <Text style={css.text}>Sem animais para exibir</Text>
-          :
-            <ActivityIndicator size="large" color="#3097ff" />
-        )
-      }
+      <Text style={css.ola}>Olá,</Text>
+      <Text style={css.cliente}>Cliente!</Text>
+      <TouchableOpacity style={css.dateButton}>
+        <Text style={css.dateText}>01/01</Text>
+      </TouchableOpacity>
+      <Text style={css.mapaText}>Mapa mensal</Text>
+      <Text style={css.termometroText}>Termômetro Emocional</Text>
+      <Image source={require("../../assets/emojis.png")} style={css.emojis} />
+      <Text style={css.porcentagem}>50%</Text>
+      <Text style={css.porcentagem}>0%</Text>
+      <Text style={css.porcentagem}>0%</Text>
+      <Text style={css.porcentagem}>0%</Text>
+      <Text style={css.porcentagem}>0%</Text>
+      <Text style={css.porcentagem}>0%</Text>
+      <Text style={css.consultaText}>Agende uma consulta para começar sua jornada de cuidado emocional. Escolha o profissional que melhor se adapta às suas necessidades, selecione o horário conveniente, e prepare-se para uma sessão focada em seu bem-estar mental.</Text>
+      <Text style={css.agendar}>Agendar Consulta</Text>
     </View>
   )
 }
+
 const css = StyleSheet.create({
   container: {
-    backgroundColor: "#191919",
     flexGrow: 1,
-    color: "white",
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  text: {
-    color: "white"
-  },
-  stories: {
     width: "100%",
-    height: 100
+    justifyContent: "center",
+    alignItems: "center",
+    alignContent: "center",
+    backgroundColor: "#E5F7FF",
+  },
+  ola: {
+    width: "20%",
+    height: 50,
+    fontSize: 20,
+    marginTop: -500,
+    paddingTop: 20,
+    marginLeft: -240
+  },
+  cliente: {
+    width: "20%",
+    height: 50,
+    fontSize: 20,
+    paddingBottom: 14,
+    marginLeft: -240,
+    fontWeight: "bold"
+  },
+  mapaText: {
+    width: "30%",
+    height: 40,
+    fontSize: 17,
+    marginLeft: -200,
+    paddingTop: 12,
+  },
+  dateButton: {
+    width: "19%",
+    height: 45,
+    borderRadius: 5,
+    marginRight: -200,
+    marginTop: -70,
+    borderWidth: 1
+  },
+  dateText: {
+    padding: 10,
+    paddingLeft: 17,
+    fontSize: 17,
+  },
+  termometroText: {
+    width: "80%",
+    fontSize: 17
+  },
+  emojis: {
+    width: "80%",
+    height: 30,
+    marginTop: 15
+  },
+  porcentagem: {
+    display: "flex",
+    justifyContent: "center",
+    flexDirection: "row"
   }
-})
+});
