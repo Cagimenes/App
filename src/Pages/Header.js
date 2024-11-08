@@ -42,7 +42,4 @@ const css = StyleSheet.create({
         justifyContent: 'center',
         marginRight: 32
       },
-      dateText: {
-        fontSize: 15
-      }
 })
