@@ -1,7 +1,6 @@
 import { View, Text, StyleSheet, FlatList, ActivityIndicator } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useFocusEffect } from '@react-navigation/native';
-import Animais from '../Components/Animais';
 
 
 export default function Home() {

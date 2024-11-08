@@ -7,7 +7,6 @@ import { AuthContext } from '../Context/AuthContext';
 
 import Home from '../Pages/Home';
 import Login from '../Pages/Login';
-import Foto from '../Pages/Foto';
 
 const Tab = createBottomTabNavigator();
 
@@ -16,7 +15,6 @@ export default function Rotas() {
     const { logado } = useContext(AuthContext);
     const [cadastro, setCadastro] = useState(false);
 
-    console.log(logado);
 
     if (!logado && !cadastro) {
         return (<Login setCadastro={setCadastro} />)
