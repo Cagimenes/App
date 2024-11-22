@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { StyleSheet, Text, View, StatusBar, TouchableOpacity, Image, Button, Pressable, SectionList } from 'react-native'
-import Header from '../Pages/Header';
-import Relaxe from '../Pages/Relaxe';
+import Header from './Header';
 import GuiaLista from './GuiaLista';
 
 export default function GuiaMeditacao({setGuia}) {
@@ -69,6 +68,7 @@ export default function GuiaMeditacao({setGuia}) {
             imagem={item.imagem}
           />
         )}
+        showsVerticalScrollIndicator={false}
       />
     </View>
   );

@@ -1,13 +1,20 @@
 import React, { useState } from 'react'
 import { View, StyleSheet, Text, StatusBar, TouchableOpacity, Image } from 'react-native'
 import GuiaMeditacao from '../Components/GuiaMeditacao';
+import Header from '../Components/Header';
+import Musicas from '../Components/Musicas';
+
 
 export default function Relaxe() {
   const [guia, setGuia] = useState(false);
+  const [musica, setMusica] = useState(false);
 
   if (guia) {
     return (<GuiaMeditacao setGuia={setGuia} />)
-}
+  }
+  if (musica) {
+    return (<Musicas setMusica={setMusica} />)
+  }
 
 
   return (
@@ -26,7 +33,7 @@ export default function Relaxe() {
           <Image source={require("../../assets/emoji-meditacao.png")} style={css.meditacao} />
           <Text style={css.botaoTexto}>Guias de Meditação</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={css.botao}>
+        <TouchableOpacity style={css.botao} onPress={() => setMusica(true)}>
           <Image source={require("../../assets/emoji-musica.png")} style={css.musica} />
           <Text style={css.botaoTexto}>Músicas e Sons Relaxantes</Text>
         </TouchableOpacity>

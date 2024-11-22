@@ -1,37 +1,41 @@
 import { Button, Image, Pressable, StyleSheet, Text, View } from "react-native";
 
-export default function GuiaLista({ nome, imagem, botao }) {
+export default function MusicaLista({ nome, imagem, botao }) {
     return (
         <View style={css.container}>
-            <Text style={css.nome}>{nome}</Text>
             <Image style={css.img} source={imagem} />
-            <Pressable style={css.botao}>
-                <Image style={css.botaoImg} source={botao} />
-            </Pressable>
+            <Text style={css.nome}>{nome}</Text>
+            <Image style={css.botaoImg} source={botao} />
         </View>
     )
 }
 const css = StyleSheet.create({
     container: {
-        width: "100%",
-        height: 250,
+        width: 375,
+        height: 60,
         alignItems: "center",
-        position: 'relative',
-        marginTop: 15
+        marginTop: 15,
+        backgroundColor: "white",
+        borderWidth: 1,
+        borderColor: "#4E778B",
+        borderRadius: 13,
+        flexDirection: "row",
+        justifyContent: "space-evenly",
+        marginBottom: 20
     },
     nome: {
         fontSize: 18,
         marginBottom: 10,
         color: '#000',
-        right: 60
+        top: 4
     },
     descricao: {
         fontSize: 16,
         fontWeight: 'bold'
     },
     img: {
-        width: 360,
-        height: 200,
+        width: 50,
+        height: 50,
         borderRadius: 10,
         borderWidth: 7,
         borderBlockColor: "#4E778B",
@@ -42,12 +46,9 @@ const css = StyleSheet.create({
     },
     botao: {
         marginTop: 12,
-        position: 'absolute',
-        top: 80,
-        left: 135,
     },
     botaoImg: {
-        width: 80,
-        height: 80
+        width: 40,
+        height: 40,
     }
 })
