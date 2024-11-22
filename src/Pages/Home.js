@@ -16,25 +16,53 @@ export default function Home() {
           <Text style={css.dateText}>01/01</Text> 
         </TouchableOpacity>
       <Text style={css.sentimentoText}>Como está se sentindo hoje?</Text>
-      <View style={css.boxx}>
-        <TouchableOpacity style={css.caixinha}>
-          <Image source={require("../../assets/feliz.png")} style={css.emoji} />
-          <Text style={css.animacoes}>Feliz</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={css.caixinha}>
-          <Image source={require("../../assets/animado.png")} style={css.emoji} />
-          <Text style={css.animacoes}>Animado</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={css.caixinha}>
-          <Image source={require("../../assets/tranquilo.png")} style={css.emoji} />
-          <Text style={css.animacoes}>Tranquilo</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={css.caixinha2}>
-          <Image source={require("../../assets/tranquilo.png")} style={css.emoji} />
-          <Text style={css.animacoes}>Tranquilo</Text>
-        </TouchableOpacity>
+      <View style={css.containerBox}>
+      <View style={css.box}>
+        <View style={css.row}>
+          <TouchableOpacity style={css.item}>
+            <Image source={require("../../assets/feliz.png")} style={css.emoji} />
+            <Text style={css.label}>Feliz</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={css.item}>
+            <Image source={require("../../assets/animado.png")} style={css.emoji}  />
+            <Text style={css.label}>Animado</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={css.item}>
+            <Image source={require("../../assets/tranquilo.png")} style={css.emoji}  />
+            <Text style={css.label}>Tranquilo</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={css.row}>
+          <TouchableOpacity style={css.item}>
+            <Image source={require("../../assets/triste.png")} style={css.emoji} />
+            <Text style={css.label}>Triste</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={css.item}>
+            <Image source={require("../../assets/cansado.png")} style={css.emoji} />
+            <Text style={css.label}>Cansado</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={css.item}>
+            <Image source={require("../../assets/ansioso.png")} style={css.emoji} />
+            <Text style={css.label}>Ansioso</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={css.row}>
+          <TouchableOpacity style={css.item}>
+            <Image source={require("../../assets/estressado.png")} style={css.emoji} />
+            <Text style={css.label}>Estressado</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={css.item}>
+            <Image source={require("../../assets/frustrado.png")} style={css.emoji} />
+            <Text style={css.label}>Frustrado</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={css.item}>
+            <Image source={require("../../assets/apatico.png")} style={css.emoji} />
+            <Text style={css.label}>Apático</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-      
+    </View>
+
       <TouchableOpacity style={css.boxEnviar}>
         <Text style={css.enviarText}>Enviar</Text>
       </TouchableOpacity>
@@ -83,7 +111,27 @@ export default function Home() {
       </View>
       </View>
       <View style={css.linha}></View>
-      <Text style={css.fonte}>Fontes Educacionais</Text>
+      <View style={css.containerFonte}>
+      <View style={css.educationalSection}>
+        <Text style={css.sectionTitle}>Fontes Educacionais</Text>
+      </View>
+        <View style={css.artigos}>
+        <Text style={css.artigosText}>Artigos</Text>
+        <View style={css.contentWrapper}>
+          <TouchableOpacity style={css.arrowButton}>
+            <Text style={css.arrowText}>{"<"}</Text>
+          </TouchableOpacity>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+            <View style={css.card}></View>
+            <View style={css.card}></View>
+            <View style={css.card}></View>
+          </ScrollView>
+          <TouchableOpacity style={css.arrowButton}>
+            <Text style={css.arrowText}>{">"}</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+      </View>
     </ScrollView>
 )
 }
@@ -114,8 +162,9 @@ const css = StyleSheet.create({
   }, 
   dateText: {
     fontSize: 18,
-    padding: 16,
+    padding: 10,
     paddingTop: 8,
+    marginLeft: 8
   },
   sentimentoText: {
     fontSize: 17,
@@ -126,35 +175,43 @@ const css = StyleSheet.create({
   boxSentimento: {
     backgroundColor: 20
   },
-  boxx: {
-    backgroundColor: "#FFFFFF",
+  containerBox: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#f5f5f5",
+  },
+  box: {
     width: "85%",
     height: 320,
+    backgroundColor: "#fff",
     borderRadius: 10,
-    borderWidth: 1,
-    marginLeft: 30,
-    display: "flex",
+    justifyContent: "space-around",
     alignItems: "center",
-    justifyContent: "center",
+    padding: 10,
+  },
+  row: {
     flexDirection: "row",
-    gap: 40
+    justifyContent: "space-around",
+    width: "100%",
   },
-  caixinha: {
+  item: {
     width: 70,
     height: 70,
-    backgroundColor: "#e0e6e9",
     borderRadius: 3,
-    marginTop: -180
-  },
-  caixinha2: {
-    width: 70,
-    height: 70,
     backgroundColor: "#e0e6e9",
-    borderRadius: 3,
-    marginTop: -180
+    justifyContent: "center",
+    alignItems: "center",
   },
   emoji: {
-    width: "20%"
+    width: "45%",
+    height: 30
+
+  },
+  label: {
+    fontSize: 12,
+    marginTop: 5,
+    textAlign: "center",
   },
   consultaText: {
     width: "90%",
@@ -300,13 +357,49 @@ const css = StyleSheet.create({
     textAlign: "center",
     fontWeight: "bold"
   },
-  emoji: {
-    width: "50%",
-    height: 35,
-    marginLeft: 15,
-    marginTop: 10
+  containerFonte: {
+    flex: 1,
+    
   },
-  animacoes: {
-    textAlign: "center"
+  educationalSection: {
+    flex: 1,
+    alignItems: "center",
+    marginTop: 20,
+  },
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 10,
+  },
+  contentWrapper: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  arrowButton: {
+    width: 30,
+    height: 30,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 5,
+  },
+  arrowText: {
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  card: {
+    width: 100,
+    height: 100,
+    backgroundColor: "#e0e0e0",
+    borderRadius: 10,
+    marginHorizontal: 10,
+  },
+  artigos: {
+    display: "flex",
+    alignItems: "center",
+  },
+  artigosText: {
+    fontSize: 17,
+    paddingRight: 270,
+    marginBottom: 10
   }
 })

@@ -1,11 +1,21 @@
+import { useState } from 'react';
+import { TouchableOpacity } from 'react-native';
 import { View, StyleSheet, Image} from 'react-native'
+import Diario from './Diario';
 export default function Header() {
+
+  const [diario, setDiario] = useState(false);
+
+  if (diario) {
+    return (<Diario setDiario={setDiario}/>)
+  }
+
   return (
     <View style={css.header}>
       <Image source={require('../../assets/logo.png')} style={css.logo} />
-      <View style={css.diario}>
+      <TouchableOpacity style={css.diario} onPress={() => setDiario(false)}>
         <Image source={require('../../assets/boxDiario.png')} style={css.diarioImage} />
-      </View>
+      </TouchableOpacity>
     </View>
   );
 }

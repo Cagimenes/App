@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { StyleSheet, Text, View, StatusBar, TouchableOpacity, Image, Button, Pressable, SectionList } from 'react-native'
-import Header from '../Pages/Header';
+import Header from './Header';
 import Relaxe from '../Pages/Relaxe';
 import GuiaLista from './GuiaLista';
 

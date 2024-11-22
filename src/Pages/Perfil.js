@@ -1,7 +1,8 @@
 import { Text, TouchableOpacity, StyleSheet, ScrollView, Image, View } from 'react-native'
 import React, { useState } from 'react'
 import { AuthContext } from '../Context/AuthContext';
-import Header from '../Components/Header';
+import Header2 from '../Components/Header2';
+
 
 export default function Perfil() {
 
@@ -15,98 +16,149 @@ export default function Perfil() {
     
 
     return (
-        <ScrollView contentContainerStyle={css.container}>
-            <Header />
-            <Image source={require("../../assets/perfilimg.png")} style={css.perfil} />
-            <Text style={css.nomeInfo}>Nome Completo</Text>
-            <Text style={css.info}>Júlia Menegassi Ferrer</Text>
-            <View style={css.containerEdit}>
-                <Text style={css.editar}>Editar</Text>
-            </View>
-            <Text style={css.nomeInfo}>Data de Nascimento</Text>
-            <Text style={css.info}>08/11/2006</Text>
-            <View style={css.containerEdit}>
-                <Text style={css.editar}>Editar</Text>
-            </View>
-            <Text style={css.nomeInfo}>CPF</Text>
-            <Text style={css.info}>462.834.648-82</Text>
-            <View style={css.containerEdit}>
-                <Text style={css.editar}>Editar</Text>
-            </View>
-            <Text style={css.nomeInfo}>Celular</Text>
-            <Text style={css.info}>(14)98179-7852</Text>
-            <View style={css.containerEdit}>
-                <Text style={css.editar}>Editar</Text>
-            </View>
-            <Text style={css.nomeInfo}>E-mail</Text>
-            <Text style={css.info}>julia.menegass159@gmail.com</Text>
-            <View style={css.containerEdit}>
-                <Text style={css.editar}>Editar</Text>
-            </View>
-            <TouchableOpacity style={css.btn}>
-                <Text style={css.btnText}>Alterar Senha</Text>
-                <Image source={require("../../assets/chave.png")} style={css.chave} />
+        <ScrollView contentContainerStyle={styles.container}>
+        <Header2 />
+        <View style={styles.containerPerfil}>
+        <View style={styles.profileSection}>
+          <Image
+            source={{ uri: 'https://via.placeholder.com/100' }}
+            style={styles.profileImage}
+          />
+          <View style={styles.profileActions}>
+            <TouchableOpacity>
+              <Text style={styles.actionText}>Editar</Text>
             </TouchableOpacity>
-        </ScrollView>
-    )
-}
-
-const css = StyleSheet.create({
+            <TouchableOpacity>
+              <Text style={styles.actionText}>Excluir</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+        <View style={styles.infoSection}>
+          <View style={styles.infoRow}>
+            <Text style={styles.label}>Nome Completo</Text>
+            <View style={styles.infoActions}>
+              <Text style={styles.value}>Cliente</Text>
+              <TouchableOpacity>
+                <Text style={styles.editText}>Editar</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+          <View style={styles.infoRow}>
+            <Text style={styles.label}>Data de Nascimento</Text>
+            <View style={styles.infoActions}>
+              <Text style={styles.value}>00/00/0000</Text>
+              <TouchableOpacity>
+                <Text style={styles.editText}>Editar</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+          <View style={styles.infoRow}>
+            <Text style={styles.label}>CPF</Text>
+            <View style={styles.infoActions}>
+              <Text style={styles.value}>000.000.000-00</Text>
+              <TouchableOpacity>
+                <Text style={styles.editText}>Editar</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+          <View style={styles.infoRow}>
+            <Text style={styles.label}>Celular</Text>
+            <View style={styles.infoActions}>
+              <Text style={styles.value}>(14)00000-0000</Text>
+              <TouchableOpacity>
+                <Text style={styles.editText}>Editar</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+          <View style={styles.infoRow}>
+            <Text style={styles.label}>E-mail</Text>
+            <View style={styles.infoActions}>
+              <Text style={styles.value}>cliente@gmail.com</Text>
+              <TouchableOpacity>
+                <Text style={styles.editText}>Editar</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>Alterar Senha</Text>
+          <Image source={require("../../assets/chave.png")} style={styles.chave} />
+        </TouchableOpacity>
+      </View>
+      </ScrollView>
+    );
+  };
+  
+  const styles = StyleSheet.create({
     container: {
         flexGrow: 1,
         width: "100%",
-        justifyContent: "center",
-        alignItems: "center",
-        alignContent: "center",
         backgroundColor: "#E5F7FF",
+        display: "flex",
     },
-    perfil: {
-        width: "33%",
-        resizeMode: "contain",
-        marginRight: 3,
-        marginTop: -80,
-        marginBottom: -20
+    containerPerfil: {
+        flex: 1,
+        padding: 20,
+        marginTop: 10
     },
-    nomeInfo: {
-        width: "90%",
-        height: 50,
-        marginBottom: 5,
-        padding: 15,
-        color: "#4E778B",
-        fontSize: 15,
-
+    profileSection: {
+      alignItems: 'center',
+      marginBottom: 55
     },
-    info: {
-        width: "90%",
-        height: 50,
-        marginBottom: 5,
-        padding: 15,
-        fontSize: 15
+    profileImage: {
+      width: 100,
+      height: 100,
+      borderRadius: 50,
+      marginBottom: 20,
     },
-    btn: {
-        width: "85%",
-        height: 50,
-        borderWidth: 0.5,
-        borderRadius: 10,
-        marginTop: 30,
-        backgroundColor: "#cde2ec"
+    profileActions: {
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      width: '50%',
     },
-    btnText: {
-        lineHeight: 45,
-        textAlign: "center",
-        fontSize: 14,
+    actionText: {
+      color: '#4E778B',
+      fontWeight: 'bold',
+    },
+    infoSection: {
+      marginBottom: 30,
+    },
+    infoRow: {
+      marginBottom: 15,
+    },
+    label: {
+      fontSize: 16,
+      fontWeight: 'bold',
+      color: '#4E778B',
+    },
+    infoActions: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      marginTop: 20
+    },
+    value: {
+      fontSize: 16,
+    },
+    editText: {
+      color: '#4E778B',
+      fontWeight: 'bold',
+    },
+    button: {
+      backgroundColor: '#cde2ec',
+      paddingVertical: 15,
+      borderRadius: 7,
+      alignItems: 'center',
+      borderWidth: 1,
+      flexDirection: "row",
+      justifyContent: "center"
+    },
+    buttonText: {
+      fontSize: 16,
     },
     chave: {
-        width: "10%"
-    },
-    containerEdit: {
-        display: "flex",
-        justifyContent: "center",
-        flexDirection: "column",
-        backgroundColor: "red",
-        marginLeft:250
-    },
-    editar: {
-        marginTop: -60
+      width: 23,
+      height: 23,
+      left: 40
     }
-})
+  });
