@@ -10,6 +10,7 @@ import Login from '../Pages/Login';
 import Relaxe from '../Pages/Relaxe';
 import Sono from '../Pages/Sono';
 import Perfil from '../Pages/Perfil';
+import Cadastro from '../Components/Cadastro';
 
 const Tab = createBottomTabNavigator();
 
@@ -21,6 +22,10 @@ export default function Rotas() {
 
     if (!logado && !cadastro) {
         return (<Login setCadastro={setCadastro} />)
+    }
+
+    if( !logado && cadastro ) {
+        return( <Cadastro setCadastro={setCadastro}/>)
     }
 
 
