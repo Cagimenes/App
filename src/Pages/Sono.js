@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { View, StyleSheet, Text, StatusBar, TouchableOpacity } from 'react-native'
-import Header from './Header';
 
 export default function Sono() {
 

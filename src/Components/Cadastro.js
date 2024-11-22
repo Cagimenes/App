@@ -5,7 +5,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import { AuthContext } from '../Context/AuthContext';
 
 
-export default function Cadastro({ setLogado, setCadastro, }) {
+export default function Cadastro({ setCadastro, }) {
 
     const [nomeCompleto, setNomeCompleto] = useState('');
     const [cpf, setCpf] = useState('');
@@ -48,12 +48,10 @@ export default function Cadastro({ setLogado, setCadastro, }) {
 
     function Cadastrar() {
         setCadastro(false);
-        setLogado(false);
     }
 
     function Voltar() {
         setCadastro(false);
-        setLogado(false);
     }
 
     return (

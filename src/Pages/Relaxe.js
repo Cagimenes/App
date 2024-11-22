@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { View, StyleSheet, Text, StatusBar, TouchableOpacity, Image } from 'react-native'
-import Header from './Header';
 import GuiaMeditacao from '../Components/GuiaMeditacao';
 
 export default function Relaxe() {

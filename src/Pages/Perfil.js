@@ -1,8 +1,7 @@
-import { Text, TouchableOpacity, StyleSheet, ScrollView, Image } from 'react-native'
-import Header from './Header';
+import { Text, TouchableOpacity, StyleSheet, ScrollView, Image, View } from 'react-native'
 import React, { useState } from 'react'
 import { AuthContext } from '../Context/AuthContext';
-
+import Header from '../Components/Header';
 
 export default function Perfil() {
 
@@ -21,15 +20,29 @@ export default function Perfil() {
             <Image source={require("../../assets/perfilimg.png")} style={css.perfil} />
             <Text style={css.nomeInfo}>Nome Completo</Text>
             <Text style={css.info}>Júlia Menegassi Ferrer</Text>
-            <Text style={css.editar}>Editar</Text>
+            <View style={css.containerEdit}>
+                <Text style={css.editar}>Editar</Text>
+            </View>
             <Text style={css.nomeInfo}>Data de Nascimento</Text>
             <Text style={css.info}>08/11/2006</Text>
+            <View style={css.containerEdit}>
+                <Text style={css.editar}>Editar</Text>
+            </View>
             <Text style={css.nomeInfo}>CPF</Text>
             <Text style={css.info}>462.834.648-82</Text>
+            <View style={css.containerEdit}>
+                <Text style={css.editar}>Editar</Text>
+            </View>
             <Text style={css.nomeInfo}>Celular</Text>
             <Text style={css.info}>(14)98179-7852</Text>
+            <View style={css.containerEdit}>
+                <Text style={css.editar}>Editar</Text>
+            </View>
             <Text style={css.nomeInfo}>E-mail</Text>
             <Text style={css.info}>julia.menegass159@gmail.com</Text>
+            <View style={css.containerEdit}>
+                <Text style={css.editar}>Editar</Text>
+            </View>
             <TouchableOpacity style={css.btn}>
                 <Text style={css.btnText}>Alterar Senha</Text>
                 <Image source={require("../../assets/chave.png")} style={css.chave} />
@@ -83,11 +96,17 @@ const css = StyleSheet.create({
         textAlign: "center",
         fontSize: 14,
     },
-    editar: {
-        marginRight: -250,
-       
-    },
     chave: {
         width: "10%"
+    },
+    containerEdit: {
+        display: "flex",
+        justifyContent: "center",
+        flexDirection: "column",
+        backgroundColor: "red",
+        marginLeft:250
+    },
+    editar: {
+        marginTop: -60
     }
 })
