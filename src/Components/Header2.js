@@ -1,3 +1,4 @@
+import { StatusBar } from 'expo-status-bar';
 import React from 'react'
 import { View, Image, StyleSheet } from 'react-native'
 
@@ -5,6 +6,7 @@ import { View, Image, StyleSheet } from 'react-native'
 export default function Header2() {
   return (
     <View style={css.header2}>
+      <StatusBar backgroundColor='#a2bfcc'/>
       <Image source={require('../../assets/loguinho.png')} style={css.logo2} />
     </View>
   );
