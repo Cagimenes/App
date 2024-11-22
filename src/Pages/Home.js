@@ -3,9 +3,17 @@ import React, { useEffect, useState } from 'react'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useFocusEffect } from '@react-navigation/native';
 import Header from '../Components/Header';
+import Profissionais from '../Components/Profissionais';
 
 export default function Home() {
   const [isSelected, setSelection] = useState(false);
+  const [profissionais, setProfissionais] = useState(false);
+
+
+  if (profissionais) {
+    return (<Profissionais setProfissionais={setProfissionais}/>)
+  }
+
   
   return (
     <ScrollView contentContainerStyle={css.container}>
@@ -87,7 +95,7 @@ export default function Home() {
       </View>
       <Text style={css.consultaText}>Agende uma consulta para começar sua jornada de cuidado emocional. Escolha o profissional que melhor se adapta às suas necessidades, selecione o horário conveniente, e prepare-se para uma sessão focada em seu bem-estar mental.</Text>
       <TouchableOpacity style={css.boxAgendar}>
-        <Text style={css.agendarText}>Agendar Consulta</Text>
+        <Text style={css.agendarText} onPress={() => setProfissionais(true)}>Agendar Consulta</Text>
       </TouchableOpacity>
       <View style={css.linha}>
       </View>

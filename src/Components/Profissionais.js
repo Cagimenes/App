@@ -1,7 +1,8 @@
 import React from 'react'
+import { Text } from 'react-native'
 
-export default function Profissionais() {
+export default function Profissionais({setProfissionais}) {
   return (
-    <div>Profissionais</div>
+    <Text onPress={() => setProfissionais(false)}>profissionais</Text>
   )
 }
