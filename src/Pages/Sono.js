@@ -4,6 +4,8 @@ import Header from './Header';
 
 export default function Sono() {
 
+  const [ opcao, setOpcao ] = useState();
+
   return (
     <View style={css.cor}>
       <StatusBar backgroundColor="#e5f7ff" />
@@ -15,7 +17,7 @@ export default function Sono() {
         <Text style={css.frase}>Como você dormiu na noite do dia 08/11/2024?</Text>
       </View>
       <View style={css.boxBotao}>
-        <TouchableOpacity style={css.botao}>
+        <TouchableOpacity style={[css.botao, { backgroundColor: opcao == "Muito bem" ? "red" : "blue"}]} onPress={() => setOpcao( "Muito bem" )}>
           <Text style={css.botaoTexto}>Muito bem</Text>
         </TouchableOpacity>
         <TouchableOpacity style={css.botao}>
@@ -73,7 +75,7 @@ const css = StyleSheet.create({
   botao: {
     width: "75%",
     height: 50,
-    borderRadius: 6,
+    borderRadius: 10,
     marginTop: 20,
     backgroundColor: "#ffffff",
     borderWidth: 1

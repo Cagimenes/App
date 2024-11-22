@@ -4,6 +4,12 @@ import Header from './Header';
 import GuiaMeditacao from '../Components/GuiaMeditacao';
 
 export default function Relaxe() {
+  const [guia, setGuia] = useState(false);
+
+  if (guia) {
+    return (<GuiaMeditacao setGuia={setGuia} />)
+}
+
 
   return (
     <View style={css.cor}>
@@ -17,7 +23,7 @@ export default function Relaxe() {
           ajudando a reduzir a ansiedade, equilibrar o humor e aumentar o foco.</Text>
       </View>
       <View style={css.boxBotao}>
-        <TouchableOpacity style={css.botao} onPress={GuiaMeditacao}>
+        <TouchableOpacity style={css.botao} onPress={() => setGuia(true)}>
           <Image source={require("../../assets/emoji-meditacao.png")} style={css.meditacao} />
           <Text style={css.botaoTexto}>Guias de Meditação</Text>
         </TouchableOpacity>
@@ -27,7 +33,7 @@ export default function Relaxe() {
         </TouchableOpacity>
         <TouchableOpacity style={css.botao}>
           <Image source={require("../../assets/emoji-respiracao.png")} style={css.respiracao} />
-          <Text style={css.botaoTexto}>Guias de Meditação</Text>
+          <Text style={css.botaoTexto}>Respire Fundo</Text>
         </TouchableOpacity>
       </View>
     </View>
