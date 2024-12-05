@@ -1,21 +1,15 @@
 import { useState } from 'react';
-import { StatusBar, TouchableOpacity } from 'react-native';
+import { Pressable, StatusBar, TouchableOpacity } from 'react-native';
 import { View, StyleSheet, Image} from 'react-native'
-import Diario from './Diario';
 
-export default function Header() {
-
-  const [diario, setDiario] = useState(false);
-  
-
-  if (diario) {
-    return (<Diario setDiario={setDiario}/>)
-  }
+export default function Header({setDiario, navigation}) {
 
   return (
     <View style={css.header}>
-      <StatusBar backgroundColor="#E5F7FF"/>
-      <Image source={require('../../assets/logo.png')} style={css.logo} />
+      <Pressable onPress={() => navigation.navigate( "Home" ) }>
+        <Image source={require('../../assets/logo.png')} style={css.logo}  />
+      </Pressable>
+      
       <TouchableOpacity style={css.diario} onPress={() => setDiario(true)}>
         <Image source={require('../../assets/boxDiario.png')} style={css.diarioImage} />
       </TouchableOpacity>
@@ -37,6 +31,7 @@ const css = StyleSheet.create({
     width: 280,
     height: 200,
     resizeMode: 'contain',
+    zIndex: 99
   },
   diario: {
     width: 50,
