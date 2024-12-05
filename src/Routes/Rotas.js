@@ -11,6 +11,7 @@ import Relaxe from '../Pages/Relaxe';
 import Sono from '../Pages/Sono';
 import Perfil from '../Pages/Perfil';
 import Cadastro from '../Components/Cadastro';
+import { Image, StyleSheet } from 'react-native';
 const Tab = createBottomTabNavigator();
 
 export default function Rotas() {
@@ -32,28 +33,35 @@ export default function Rotas() {
             <Tab.Navigator
                 screenOptions={{
                     headerShown: false,
-                    tabBarShowLabel: false,
                     tabBarStyle: {
                         backgroundColor: '#f1fffe',
+                        height: 70,
                     },
-                    tabBarActiveTintColor: "black"
+                    tabBarActiveTintColor: "black",
+                    tabBarInactiveTintColor: 'gray', 
+                    tabBarLabelStyle: {
+                        fontSize: 12, 
+                        fontWeight: 'bold', 
+                        bottom: 5
+                    }
                 }}
-            >
+                    >
                 <Tab.Screen
                     name="Home"
                     component={Home}
                     options={{
                         tabBarIcon: ({ color, size }) => (
-                            <MaterialCommunityIcons name="home" color={color} size={size} />
-                        ),
+                            <Image source={require("../../assets/home.png")} style={css.iconCasa} color={color} />
+                        )
                     }}
+                    
                 />
                 <Tab.Screen
                     name="Relaxe"
                     component={Relaxe}
                     options={{
                         tabBarIcon: ({ color, size }) => (
-                            <MaterialCommunityIcons name="home" color={color} size={size} />
+                            <Image source={require("../../assets/relaxe.png")} style={css.icon} />
                         ),
                     }}
                 />
@@ -62,7 +70,7 @@ export default function Rotas() {
                     component={Sono}
                     options={{
                         tabBarIcon: ({ color, size }) => (
-                            <MaterialCommunityIcons name="home" color={color} size={size} />
+                            <Image source={require("../../assets/sono.png")} style={css.icon} />
                         ),
                     }}
                 />
@@ -71,11 +79,21 @@ export default function Rotas() {
                     component={Perfil}
                     options={{
                         tabBarIcon: ({ color, size }) => (
-                            <MaterialCommunityIcons name="home" color={color} size={size} />
+                            <Image source={require("../../assets/perfil.png")} style={css.icon} />
                         ),
                     }}
                 />
             </Tab.Navigator>
-        </NavigationContainer>
+        </NavigationContainer >
     )
 }
+const css = StyleSheet.create({
+    icon: {
+        width: 30,
+        height: 30
+    },
+    iconCasa: {
+        width: 29.5,
+        height: 29.5
+    }
+});
