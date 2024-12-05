@@ -19,7 +19,6 @@ export default function Relaxe() {
 
   return (
     <View style={css.cor}>
-      <StatusBar backgroundColor="#e5f7ff" />
       <Header />
       <View style={css.container}>
         <Text style={css.relaxe}>Relaxe</Text>

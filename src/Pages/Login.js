@@ -70,7 +70,6 @@ export default function Login({setCadastro}) {
 
     return (
         <ScrollView contentContainerStyle={css.container}>
-            <StatusBar backgroundColor="#D4F2FE" />
             <Image source={require("../../assets/logo-reffuge (2).png")} style={css.logo} />
             <Text style={css.email}>Email</Text>
             <TextInput
