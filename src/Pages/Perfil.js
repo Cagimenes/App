@@ -20,7 +20,7 @@ export default function Perfil({navigation}) {
   } 
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <View style={styles.container}>
       <Header setHome={setHome} navigation={navigation}/>
       <View style={styles.containerPerfil}>
         <View style={styles.profileSection}>
@@ -86,7 +86,7 @@ export default function Perfil({navigation}) {
           <Image source={require("../../assets/chave.png")} style={styles.chave} />
         </TouchableOpacity>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 
