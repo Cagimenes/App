@@ -1,13 +1,18 @@
 import { View, Text, StyleSheet, TouchableOpacity, Image, ScrollView, Pressable} from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useFocusEffect } from '@react-navigation/native';
 import Header from '../Components/Header';
 import Profissionais from '../Components/Profissionais';
+import { AuthContext } from '../Context/AuthContext';
 
 export default function Home() {
   const [isSelected, setSelection] = useState(false);
   const [profissionais, setProfissionais] = useState(false);
+
+  const {profissionalSelecionado} = useContext( AuthContext );
+
+  console.log( profissionalSelecionado );
 
 
   if (profissionais) {

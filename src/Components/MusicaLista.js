@@ -27,7 +27,8 @@ const css = StyleSheet.create({
         fontSize: 18,
         marginBottom: 10,
         color: '#000',
-        top: 4
+        top: 4,
+        right: 20
     },
     descricao: {
         fontSize: 16,
@@ -39,6 +40,7 @@ const css = StyleSheet.create({
         borderRadius: 10,
         borderWidth: 7,
         borderBlockColor: "#4E778B",
+        right: 15
     },
     unidade: {
         fontWeight: 'bold',
@@ -48,7 +50,7 @@ const css = StyleSheet.create({
         marginTop: 12,
     },
     botaoImg: {
-        width: 40,
-        height: 40,
+        width: 30,
+        height: 30,
     }
 })

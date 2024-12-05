@@ -11,7 +11,6 @@ import Relaxe from '../Pages/Relaxe';
 import Sono from '../Pages/Sono';
 import Perfil from '../Pages/Perfil';
 import Cadastro from '../Components/Cadastro';
-
 const Tab = createBottomTabNavigator();
 
 export default function Rotas() {
@@ -19,13 +18,12 @@ export default function Rotas() {
     const { logado } = useContext(AuthContext);
     const [cadastro, setCadastro] = useState(false);
 
-
     if (!logado && !cadastro) {
         return (<Login setCadastro={setCadastro} />)
     }
 
-    if( !logado && cadastro ) {
-        return( <Cadastro setCadastro={setCadastro}/>)
+    if (!logado && cadastro) {
+        return (<Cadastro setCadastro={setCadastro} />)
     }
 
 
@@ -50,7 +48,7 @@ export default function Rotas() {
                         ),
                     }}
                 />
-                 <Tab.Screen
+                <Tab.Screen
                     name="Relaxe"
                     component={Relaxe}
                     options={{
@@ -68,7 +66,7 @@ export default function Rotas() {
                         ),
                     }}
                 />
-                 <Tab.Screen
+                <Tab.Screen
                     name="Perfil"
                     component={Perfil}
                     options={{
@@ -77,7 +75,6 @@ export default function Rotas() {
                         ),
                     }}
                 />
-
             </Tab.Navigator>
         </NavigationContainer>
     )

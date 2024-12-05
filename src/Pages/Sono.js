@@ -1,112 +1,216 @@
-import React, { useState } from 'react'
-import { View, StyleSheet, Text, StatusBar, TouchableOpacity } from 'react-native'
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Button, ScrollView } from 'react-native';
 import Header from '../Components/Header';
-import SonoHoras from '../Components/SonoHoras';
 
 export default function Sono() {
+  const [respostas, setRespostas] = useState({
+    qualidade: '',
+    horas: '',
+    pesadelos: '',
+  });
 
-  const [ opcao, setOpcao ] = useState();
-  const [proximo, setProximo] = useState(false);
+  const [etapa, setEtapa] = useState(1);
 
-  if (proximo) {
-    return (<SonoHoras setProximo={setProximo} />)
-}
+  const avancarEtapa = (campo, valor) => {
+    setRespostas({ ...respostas, [campo]: valor });
+    setEtapa(etapa + 1);
+  };
+
+  const reiniciar = () => {
+    setRespostas({ qualidade: '', horas: '', pesadelos: '' });
+    setEtapa(1);
+  };
 
   return (
-    <View style={css.cor}>
-      <StatusBar backgroundColor="#e5f7ff" />
+    <View style={css.container}>
       <Header />
-      <View style={css.container}>
-      <Text style={css.sono}>Sono</Text>
-      </View>
-      <View style={css.boxFrase}>
-        <Text style={css.frase}>Como você dormiu na noite do dia 01/01/2024?</Text>
-      </View>
-      <View style={css.boxBotao}>
-        <TouchableOpacity style={[css.botao, { backgroundColor: opcao == "Muito bem" ? "#4E778B" : "white"}]} onPress={() => setOpcao( "Muito bem" )}>
-          <Text style={[css.botaoTexto, { color: opcao == "Muito bem" ? "white" : "black"}]} onPress={() => setOpcao( "Muito bem" )}>Muito bem</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={[css.botao, { backgroundColor: opcao == "Bem" ? "#4E778B" : "white"}]} onPress={() => setOpcao( "Bem" )}>
-          <Text style={[css.botaoTexto, { color: opcao == "Bem" ? "white" : "black"}]} onPress={() => setOpcao( "Bem" )}>Bem</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={[css.botao, { backgroundColor: opcao == "Nem bem, nem mal" ? "#4E778B" : "white"}]} onPress={() => setOpcao( "Nem bem, nem mal" )}>
-          <Text style={[css.botaoTexto, { color: opcao == "Nem bem, nem mal" ? "white" : "black"}]} onPress={() => setOpcao( "Nem bem, nem mal" )}>Nem bem, nem mal</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={[css.botao, { backgroundColor: opcao == "Mal" ? "#4E778B" : "white"}]} onPress={() => setOpcao( "Mal" )}>
-          <Text style={[css.botaoTexto, { color: opcao == "Mal" ? "white" : "black"}]} onPress={() => setOpcao( "Mal" )}>Mal</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={[css.botao, { backgroundColor: opcao == "Muito mal" ? "#4E778B" : "white"}]} onPress={() => setOpcao( "Muito mal" )}>
-          <Text style={[css.botaoTexto, { color: opcao == "Muito mal" ? "white" : "black"}]} onPress={() => setOpcao( "Muito mal" )}>Muito mal</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={css.proximo} onPress={() => setProximo(true)}>
-          <Text style={css.seta}>➜</Text>
-        </TouchableOpacity>
-      </View>
+      {etapa === 1 && (
+        <Pergunta
+          titulo="Como você dormiu na noite do dia 01/01/2024?"
+          opcoes={['Muito bem', 'Bem', 'Nem bem, nem mal', 'Mal', 'Muito mal']}
+          onSelecionar={(valor) => avancarEtapa('qualidade', valor)}
+        />
+      )}
+
+      {etapa === 2 && (
+        <Pergunta
+          titulo="Quantas horas você dormiu na noite do dia 01/01/2024?"
+          opcoes={['Menos que 6 horas', '6 horas', '7 horas', '8 horas', 'Mais que 8 horas']}
+          onSelecionar={(valor) => avancarEtapa('horas', valor)}
+        />
+      )}
+
+      {etapa === 3 && (
+        <Pergunta
+          titulo="Você teve pesadelos na noite do dia 01/01/2024?"
+          opcoes={['Nenhum', 'Leve', 'Moderado', 'Intenso', 'Não lembro']}
+          onSelecionar={(valor) => avancarEtapa('pesadelos', valor)}
+        />
+      )}
+
+      {etapa === 4 && (
+        <Resultado respostas={respostas} onReiniciar={reiniciar} />
+      )}
     </View>
   );
 }
+
+const Pergunta = ({ titulo, opcoes, onSelecionar }) => {
+  return (
+    <View style={css.container}>
+      <View style={css.containerSono}>
+        <Text style={css.sono}>Sono</Text>
+      </View>
+      <Text style={css.titulo}>{titulo}</Text>
+      {opcoes.map((opcao, index) => (
+        <TouchableOpacity
+          key={index}
+          style={css.botao}
+          onPress={() => onSelecionar(opcao)}
+        >
+          <Text style={css.textoBotao}>{opcao}</Text>
+        </TouchableOpacity>
+      ))}
+    </View>
+  );
+};
+
+const Resultado = ({ respostas, onReiniciar }) => {
+  const valores = {
+    qualidade: {
+      'Muito bem': 136,
+      'Bem': 116,
+      'Nem bem, nem mal': 68,
+      'Mal': 40,
+      'Muito mal': 20,
+    },
+    horas: {
+      'Menos que 6 horas': 20,
+      '6 horas': 40,
+      '7 horas': 68,
+      '8 horas': 116,
+      'Mais que 8 horas': 136,
+    },
+    pesadelos: {
+      'Nenhum': 1,
+      'Leve': 40,
+      'Moderado': 68,
+      'Intenso': 136,
+      'Não lembro': 20,
+    },
+  };
+
+  return (
+    <ScrollView>
+      <View style={css.container}>
+        <View style={css.containerSono}>
+          <Text style={css.sono}>Sono</Text>
+        </View>
+        <Text style={css.titulo}>Resumo do Sono</Text>
+
+        <View style={css.graficoContainer}>
+          {['qualidade', 'horas', 'pesadelos'].map((campo, index) => (
+            <View key={index} style={css.barraContainer}>
+              <View style={css.barraFixa}>
+                <View
+                  style={[
+                    css.barra,
+                    { height: (valores[campo][respostas[campo] || ''] || 0) * 2 },
+                  ]}
+                />
+              </View>
+              <Text style={css.label}>{campo}</Text>
+            </View>
+          ))}
+        </View>
+
+        <TouchableOpacity style={css.botaoReiniciar} onPress={onReiniciar}>
+          <Text style={css.textoBotao}>Reiniciar</Text>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
+  );
+};
+
 const css = StyleSheet.create({
   container: {
+    backgroundColor: '#e5f7ff',
     flexGrow: 1,
-    width: "100%",
-    justifyContent: "center",
-    alignItems: "center",
-    alignContent: "center",
+    height: 600,
   },
-  cor: {
-    backgroundColor: "#e5f7ff",
-    alignItems: "center",
+  titulo: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: 25,
+    marginTop: 40,
+    width: "80%",
+    left: 40
+  },
+  botao: {
+    backgroundColor: '#4E778B',
+    padding: 15,
+    marginVertical: 10,
+    borderRadius: 8,
+    alignItems: 'center',
+    width: "80%",
+    left: 40
+  },
+  textoBotao: {
+    color: '#fff',
+    fontSize: 16,
+  },
+  graficoContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginVertical: 20,
+    top: 30
+  },
+  barraContainer: {
+    alignItems: 'center',
+    height: 300,
+  },
+  barraFixa: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    width: 50, 
+    height: 100,
+    backgroundColor: "#BDE8FD", // Cor de fundo para contraste, se necessário
+    borderRadius: 5, 
+    shadowOffset: { width: 0, height: 2 }, // Deslocamento da sombra
+    shadowOpacity: 0.3, // Opacidade fixa
+    shadowRadius: 5, // Raio de desfoque
+    elevation: 6, // Sombra para Android
+  },
+  barra: {
+    width: '100%',
+    backgroundColor: "#85BBD6",
+    borderRadius: 5,
+  },
+  label: {
+    marginTop: 5,
+    fontSize: 16,
+    textAlign: 'center',
+  },
+  containerSono: {
+    alignItems: 'center',
   },
   sono: {
     fontSize: 19,
-    color: "#4E778B"
+    color: '#4E778B',
   },
-  boxFrase: {
-    width: "100%",
-    display: "flex",
-    height: 100,
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  frase: {
+  botaoReiniciar: {
+    backgroundColor: '#4E778B',
+    padding: 15,
+    marginVertical: 10,
+    borderRadius: 8,
+    alignItems: 'center',
     width: "80%",
-    textAlign: "center",
-    fontWeight: "bold",
-    fontSize: 15.7
+    left: 40,
+    top: 50
   },
-  botaoTexto: {
-    color: "black",
-    lineHeight: 50,
-    textAlign: "center",
+  textoBotao: {
+    color: '#fff',
     fontSize: 16,
-    fontWeight: "bold",
   },
-  botao: {
-    width: "75%",
-    height: 50,
-    borderRadius: 10,
-    marginTop: 20,
-    backgroundColor: "#ffffff",
-    borderWidth: 1
-  },
-  boxBotao: {
-    width: "100%",
-    height: "100%",
-    alignItems: "center"
-  }, 
-  proximo: {
-    width: "15%",
-    height: 40,
-    borderRadius: 10,
-    marginTop: 10,
-    backgroundColor: "#4E778B",
-    left: 123
-  },
-  seta: {
-    color: "white",
-    textAlign: "center",
-    top: 5,
-    fontSize: 20
-  }
-})
-
+});

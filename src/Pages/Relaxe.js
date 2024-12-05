@@ -3,17 +3,22 @@ import { View, StyleSheet, Text, StatusBar, TouchableOpacity, Image } from 'reac
 import GuiaMeditacao from '../Components/GuiaMeditacao';
 import Header from '../Components/Header';
 import Musicas from '../Components/Musicas';
+import Respire from '../Components/Respire';
 
 
 export default function Relaxe() {
   const [guia, setGuia] = useState(false);
   const [musica, setMusica] = useState(false);
+  const [respire, setRespire] = useState(false);
 
   if (guia) {
     return (<GuiaMeditacao setGuia={setGuia} />)
   }
   if (musica) {
     return (<Musicas setMusica={setMusica} />)
+  }
+  if (respire) {
+    return (<Respire setRespire={setRespire} />)
   }
 
 
@@ -37,7 +42,7 @@ export default function Relaxe() {
           <Image source={require("../../assets/emoji-musica.png")} style={css.musica} />
           <Text style={css.botaoTexto}>Músicas e Sons Relaxantes</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={css.botao}>
+        <TouchableOpacity style={css.botao} onPress={() => setRespire(true)}>
           <Image source={require("../../assets/emoji-respiracao.png")} style={css.respiracao} />
           <Text style={css.botaoTexto}>Respire Fundo</Text>
         </TouchableOpacity>

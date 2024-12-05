@@ -1,5 +1,5 @@
 import { Text, TouchableOpacity, StyleSheet, ScrollView, Image, View } from 'react-native'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { AuthContext } from '../Context/AuthContext';
 import Header2 from '../Components/Header2';
 
@@ -13,6 +13,11 @@ export default function Perfil() {
     const [ddd, setDdd] = useState("");
     const [celular, setCelular] = useState("");
     const [email, setEmail] = useState("");
+
+
+    const {profissionalSelecionado} = useContext( AuthContext );
+
+  console.log( "perfil", profissionalSelecionado );
     
 
     return (

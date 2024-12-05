@@ -85,7 +85,7 @@ export default function Musicas({setMusica}) {
           <View style={css.container}>
             <Text style={css.relaxe} onPress={ () => setMusica( false )}>Relaxe</Text>
             <Text style={css.btnVoltar} onPress={ () => setMusica( false )}> ˃ </Text>
-            <Text style={css.relaxe}>Guias de Meditação</Text>
+            <Text style={css.relaxe}>Músicas e Sons Relaxantes</Text>
           </View>
           <SectionList
             sections={lista}

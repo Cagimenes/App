@@ -5,6 +5,7 @@ export const AuthContext = createContext(0);
 function AuthProvider({ children }) {
     const [logado, setLogado] = useState(false);
     const [error, setError] = useState(false);
+    const [profissionalSelecionado, setProfissionalSelecionado] = useState();
 
     async function Login(email, senha) {
 
@@ -32,7 +33,7 @@ function AuthProvider({ children }) {
     }
 
     return (
-        <AuthContext.Provider value={{ logado: logado, Login, error: error, setLogado }}>
+        <AuthContext.Provider value={{ logado: logado, Login, error: error, setLogado, profissionalSelecionado, setProfissionalSelecionado }}>
             {children}
         </AuthContext.Provider>
     )
