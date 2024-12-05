@@ -34,16 +34,22 @@ export default function Artigos({setArtigos}) {
 
 const css = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#e5f7ff',
-    paddingTop: 20,
+    flexGrow: 1,
+    width: "100%",
     justifyContent: "center",
     alignItems: "center",
-    flexDirection: "collumn"
+    alignContent: "center",
+    display: "flex",
+    marginBottom: 15
+  },
+  cor: {
+    backgroundColor: "#e5f7ff",
+    alignItems: "center",
+    height: "100%"
   },
   artigos: {
     fontSize: 19,
-    color: "#4E778B"
+    color: "#4E778B",
   },
   btnVoltar: {
     fontSize: 25,

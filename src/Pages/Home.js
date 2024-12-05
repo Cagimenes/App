@@ -271,7 +271,7 @@ export default function Home({ setHome, navigation }) {
       <View style={css.inputContainer}>
         <TextInput
           style={css.input}
-          placeholder="Digite uma nova tarefa"
+          placeholder="Nova tarefa"
           value={novaTarefa}
           onChangeText={setNovaTarefa}
         />
@@ -488,7 +488,7 @@ const css = StyleSheet.create({
   },
   agendarText: {
     padding: 14,
-    fontSize: 15,
+    fontSize: 16,
     paddingLeft: 20,
     color: "#4E778B",
   },
@@ -531,7 +531,7 @@ const css = StyleSheet.create({
   },
   tempoText: {
     width: "100%",
-    fontSize: 17,
+    fontSize: 16,
     marginLeft: 90,
     marginTop: -15
   },
@@ -556,17 +556,19 @@ const css = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#bbc7cd',
     borderRadius: 5,
-    padding: 9,
+    padding: 12,
     marginRight: 10,
-    paddingLeft: 16
+    paddingLeft: 30,
+    fontSize: 16
   },
   botaoAdicionar: {
     backgroundColor: '#7399AB',
-    padding: 14,
+    padding: 16,
     borderRadius: 5,
   },
   botaoTexto: {
     color: 'white',
+    fontSize: 16
   },
   tarefaContainer: {
     flexDirection: 'row',
@@ -626,8 +628,8 @@ const css = StyleSheet.create({
     borderRadius: 5,
   },
   arrowText: {
-    fontSize: 18,
-    fontWeight: "bold",
+    fontSize: 30,
+    color: "#4E778B"
   },
   card: {
     width: 100,
