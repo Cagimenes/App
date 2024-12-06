@@ -14,7 +14,7 @@ export default function Profissionais({ setProfissionais }) {
       nome: "Dra. Melissa Gonçalves",
       especialidade: "Acomp. terapêutico",
       perfil: "Ver perfil completo",
-      descricao: "Sou Melissa Gonçalves, psicóloga especializada em acompanhamento terapêutico. Minha missão é oferecer suporte emocional e psicológico, criando um ambiente acolhedor e de confiança. Acredito que o processo terapêutico é uma jornada de autoconhecimento e crescimento, e estou aqui para te ajudar a enfrentar desafios pessoais e emocionais, sempre respeitando o seu ritmo.",
+      descricao: "Sou Melissa Gonçalves, psicóloga especializada em acompanhamento terapêutico. Minha missão é oferecer suporte emocional e psicológico. Acredito que o processo terapêutico é uma jornada de autoconhecimento e crescimento, e estou aqui para te ajudar a enfrentar desafios pessoais e emocionais, sempre respeitando o seu ritmo.",
       botao: "Agendar"
     },
     {
@@ -74,7 +74,7 @@ export default function Profissionais({ setProfissionais }) {
       </View>
       {profissional ?
         <>
-          <ScrollView style={css.perfil}>
+          <View style={css.perfil}>
             <View style={css.boxPerfil}>
               <Text style={css.nome}>{profissional.nome}</Text>
               <Text style={css.especialidade}>Especialidade: {profissional.especialidade}</Text>
@@ -89,7 +89,7 @@ export default function Profissionais({ setProfissionais }) {
                 <Text style={css.voltarText}>Voltar</Text>
               </Pressable>
             </View>
-          </ScrollView>
+          </View>
         </>
         :
 
@@ -158,8 +158,8 @@ const css = StyleSheet.create({
     fontWeight: "bold"
   },
   foto: {
-    width: 320,
-    height: 320,
+    width: 290,
+    height: 290,
     borderRadius: 400,
     marginTop: 13,
     marginBottom: 13

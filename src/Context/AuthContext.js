@@ -6,34 +6,21 @@ function AuthProvider({ children }) {
     const [logado, setLogado] = useState(false);
     const [error, setError] = useState(false);
     const [profissionalSelecionado, setProfissionalSelecionado] = useState();
-
-    async function Login(email, senha) {
-
-        if (email != "" && senha != "") {
-            await fetch('https://fakestoreapi.com/auth/login', {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify({
-                    username: email,
-                    password: senha
-                })
-            })
-                .then(res => (res.ok == true) ? res.json() : false)
-                .then(json => {
-                    setLogado((json.token) ? true : false);
-                    setError((json.token) ? false : true);
-                }
-                )
-                .catch(err => setError(true))
-        } else {
-            setError(true)
-        }
-    }
+    
+    const usuario = {
+        clienteId: 2,
+        nomeCliente: "Luciana",
+        fotoCliente: "",
+        cpfCliente: "27697450852",
+        telefoneCliente: "66666666",
+        emailCliente: "l",
+        senhaCliente: "1234",
+        planosId: 1
+      }
+    
 
     return (
-        <AuthContext.Provider value={{ logado: logado, Login, error: error, setLogado, profissionalSelecionado, setProfissionalSelecionado }}>
+        <AuthContext.Provider value={{ logado: logado, error: error, setLogado, profissionalSelecionado, setProfissionalSelecionado, usuario }}>
             {children}
         </AuthContext.Provider>
     )
