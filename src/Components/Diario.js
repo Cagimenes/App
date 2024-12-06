@@ -24,8 +24,7 @@ export default function Diario({ setDiario }) {
       <TextInput
         style={css.escrever}
         placeholder="Escreva aqui suas emoções..."
-        placeholderTextColor="#999"
-        multiline
+        placeholderTextColor="black"
         value={textoDiario}
         onChangeText={setTextoDiario}
       />
@@ -79,9 +78,9 @@ const css = StyleSheet.create({
   escrever: {
     width: "90%",
     marginLeft: 20,
-    height: 530,
+    height: 525,
     backgroundColor: "white",
-    marginTop: 35,
+    marginTop: 28,
     borderWidth: 0.8,
     padding: 10,
     textAlignVertical: 'top',

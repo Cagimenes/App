@@ -236,25 +236,6 @@ export default function Home({ setHome, navigation }) {
           <Text style={css.enviarText}>Enviar</Text>
         </TouchableOpacity>
       )}
-      <Text style={css.termometroEmocional}>Termômetro emocional</Text>
-
-      <View style={css.containerStyle}>
-        <Image source={require("../../assets/feliz.png")} style={css.emojis} />
-        <Image source={require("../../assets/animado.png")} style={css.emojis} />
-        <Image source={require("../../assets/tranquilo.png")} style={css.emojis} />
-        <Image source={require("../../assets/triste.png")} style={css.emojis} />
-        <Image source={require("../../assets/frustrado.png")} style={css.emojis} />
-        <Image source={require("../../assets/estressado.png")} style={css.emojis} />
-      </View>
-      
-      <View style={css.containerNumber}>
-        <Text style={css.porcentagem}>50%</Text>
-        <Text style={css.porcentagem}>0%</Text>
-        <Text style={css.porcentagem}>0%</Text>
-        <Text style={css.porcentagem}>0%</Text>
-        <Text style={css.porcentagem}>0%</Text>
-        <Text style={css.porcentagem}>0%</Text>
-      </View>
       <View style={css.linha}>
       </View>
       <Text style={css.consultaText}>Agende uma consulta para começar sua jornada de cuidado emocional. Escolha o profissional que melhor se adapta às suas necessidades, selecione o horário conveniente, e prepare-se para uma sessão focada em seu bem-estar mental.</Text>
@@ -650,7 +631,8 @@ const css = StyleSheet.create({
   videos: {
     display: "flex",
     alignItems: "center",
-    marginTop: 14
+    marginTop: 10,
+    marginBottom: 50
   },
   videosText: {
     fontSize: 17,

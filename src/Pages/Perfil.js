@@ -3,6 +3,7 @@ import { Text, TouchableOpacity, StyleSheet, ScrollView, Image, View, StatusBar 
 import { AuthContext } from '../Context/AuthContext';
 import Header from '../Components/Header';
 import Home from './Home';
+import Diario from '../Components/Diario';
 
 export default function Perfil({navigation}) {
 
@@ -14,14 +15,19 @@ export default function Perfil({navigation}) {
   const [celular, setCelular] = useState("");
   const [email, setEmail] = useState("");
   const [home, setHome] = useState(false);
-  
+  const [diario, setDiario] = useState(false);
+
   if (home) {
     return (<Home setHome={setHome}/>)
   } 
 
+  if (diario) {
+    return <Diario setDiario={setDiario} />;
+  }
+
   return (
     <View style={styles.container}>
-      <Header setHome={setHome} navigation={navigation}/>
+      <Header setHome={setHome} setDiario={setDiario} navigation={navigation}/>
       <View style={styles.containerPerfil}>
         <View style={styles.profileSection}>
           <Image style={styles.profileImage} source={require("../../assets/cliente.jpg")}/>
@@ -143,7 +149,7 @@ const styles = StyleSheet.create({
   editText: {
     color: '#4E778B',
     fontWeight: 'bold',
-    fontSize: 15
+    fontSize: 16
   },
   button: {
     backgroundColor: '#cde2ec',

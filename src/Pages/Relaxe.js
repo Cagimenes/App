@@ -4,12 +4,13 @@ import GuiaMeditacao from '../Components/GuiaMeditacao';
 import Header from '../Components/Header';
 import Musicas from '../Components/Musicas';
 import Respire from '../Components/Respire';
+import Diario from '../Components/Diario';
 
-
-export default function Relaxe() {
+export default function Relaxe({navigation}) {
   const [guia, setGuia] = useState(false);
   const [musica, setMusica] = useState(false);
   const [respire, setRespire] = useState(false);
+  const [diario, setDiario] = useState(false);
 
   if (guia) {
     return (<GuiaMeditacao setGuia={setGuia} />)
@@ -20,11 +21,13 @@ export default function Relaxe() {
   if (respire) {
     return (<Respire setRespire={setRespire} />)
   }
-
+  if (diario) {
+    return <Diario setDiario={setDiario} />;
+  }
 
   return (
     <View style={css.cor}>
-      <Header />
+      <Header setDiario={setDiario} navigation={navigation}/>
       <View style={css.container}>
         <Text style={css.relaxe}>Relaxe</Text>
       </View>
